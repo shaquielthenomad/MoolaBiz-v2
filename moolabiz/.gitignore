@@ -1,0 +1,22 @@
+# Dependencies
+node_modules/
+.next/
+
+# Environment
+.env.local
+.env.*.local
+
+# Proprietary (NEVER commit)
+workspace/SOUL.md
+workspace/skills/
+
+# Build
+tsconfig.tsbuildinfo
+*.tsbuildinfo
+
+# Docker
+ollama_data/
+
+# IDE
+.vscode/
+.idea/

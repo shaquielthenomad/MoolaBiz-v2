@@ -1,0 +1,13 @@
+# MoolaBiz Hub — your public signup site
+version: "3.8"
+
+services:
+  hub:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile.hub
+    restart: always
+    ports:
+      - "3000:3000"
+    env_file:
+      - ../.env.hub.local

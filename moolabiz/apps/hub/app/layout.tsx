@@ -1,0 +1,15 @@
+import type { Metadata } from "next";
+import "./globals.css";
+
+export const metadata: Metadata = {
+  title: "MoolaBiz — Free 24/7 WhatsApp Shop Bot for African Traders",
+  description: "Get your own AI-powered WhatsApp business bot in under 8 minutes. Free forever. Built for spaza shops, braiders, tailors & caterers.",
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <body className="antialiased bg-white text-gray-900">{children}</body>
+    </html>
+  );
+}

@@ -1,0 +1,27 @@
+{
+  "name": "MoolaBiz Bot Instance",
+  "description": "Single-tenant WhatsApp AI shop bot with free Ollama AI",
+  "type": "docker-compose",
+  "compose_file": "deploy/docker-compose.bot.yml",
+  "default_environment_variables": {
+    "OLLAMA_BASE_URL": "http://ollama:11434",
+    "NEXT_PUBLIC_APP_URL": "https://{{FQDN}}",
+    "WHATSAPP_PHONE_NUMBER_ID": "{{input:Phone Number ID}}",
+    "WHATSAPP_ACCESS_TOKEN": "{{input:Access Token}}",
+    "WHATSAPP_WEBHOOK_VERIFY_TOKEN": "{{random:hex:32}}",
+    "CRON_SECRET": "{{random:hex:32}}",
+    "ADMIN_PASSWORD": "{{random:hex:16}}",
+    "ADVOCATE_API_KEY": "{{random:hex:32}}",
+    "PAYMENTS_API_KEY": "{{random:hex:32}}"
+  },
+  "volumes": {
+    "workspace": {
+      "source": "./workspace",
+      "target": "/app/workspace",
+      "readonly": true
+    }
+  },
+  "post_deploy_commands": [
+    "docker exec $(docker ps -q -f name=ollama) ollama pull llama3.2:3b"
+  ]
+}
